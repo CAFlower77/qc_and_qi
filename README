@@ -5,3 +5,7 @@ Copyright (c) 2024 ChenPhys CA77
 温馨提醒: 本项目仅适用学习交流
 
 Textbook: Quantum Computation and Quantum Information: 10th Anniversary Edition by Michael A. Nielsen and Issac L. Chuang.
+
+How to build:
+xelatex -shell-escape -synctex=1 -interaction=nonstopmode -file-line-error main.tex
+xelatex -shell-escape -synctex=1 -interaction=nonstopmode -file-line-error main.tex
