@@ -1,0 +1,154 @@
+\documentclass[
+    8pt,
+    mathfont=none,
+    class=book
+]{easybook}
+
+\title{量子计算与量子信息 Notes}
+\author{Flower CA77}
+\date{}
+
+\PassOptionsToPackage{dvipsnames, svgnames, x11names}{xcolor}
+
+\ctexset{
+    style={
+        color=seaside,
+        uppercase=none
+    },
+    refset/linktype=colors,
+    geoset/hmargin=1.5cm,
+    hdrset/fnmarktext-num=pifont
+}
+
+\usepackage{
+    amsmath, amssymb, esint, mathrsfs, bm, bbm, mathtools,
+    cases, extarrows, siunitx, physics, geometry
+}
+
+\declaretheoremstyle[
+    headfont=\sffamily\color{Green},
+    bodyfont=\color{SkyBlue!65!Green},
+    notefont=\color{Green!40!SkyBlue},
+    headpunct=,
+    headindent=\parindent,
+    postheadspace=\parindent,
+    notebraces = {\ (}{)\ }
+]{default_style}
+\theoremstyle{default_style}
+\declaretheoremstyle[
+    headfont=\sffamily\color{SlateBlue},
+    bodyfont=\color{SkyBlue!65!Black},
+    notefont=\color{SlateBlue!40!SkyBlue},
+    headpunct=,
+    headindent=\parindent,
+    postheadspace=\parindent,
+    notebraces = {\ (}{)\ }
+]{def_style}
+\declaretheorem[
+    name=定义,
+    numbered=unless unique,
+    within=chapter,
+    style=def_style
+]{definition}
+\declaretheorem[
+    name=定义,
+    numbered=no,
+    within=chapter,
+    style=def_style
+]{definition*}
+\declaretheoremstyle[
+    headfont=\sffamily\color{Purple},
+    bodyfont=\color{SkyBlue!65!Purple},
+    notefont=\color{Purple!40!SkyBlue},
+    headpunct=,
+    headindent=\parindent,
+    postheadspace=\parindent,
+    notebraces = {\ (}{)\ }
+]{thm_style}
+\declaretheorem[
+    name=定理,
+    numbered=unless unique,
+    within=section,
+    style=thm_style
+]{theorem}
+\declaretheorem[
+    name=命题,
+    numbered=no,
+    style=thm_style
+]{proposition}
+\declaretheoremstyle[
+    headfont=\sffamily\color{DarkCyan},
+    bodyfont=\ttfamily\color{SkyBlue!75!Black},
+    notefont=\color{DarkCyan!45!SkyBlue},
+    headpunct=,
+    headindent=\parindent,
+    postheadspace=\parindent,
+    notebraces = {\ (}{)\ }
+]{ex_style}
+\declaretheorem[
+    name=例,
+    numbered=unless unique,
+    style=ex_style
+]{example}
+\declaretheorem[
+    name=习题,
+    numbered=no,
+    style=ex_style
+]{exercise}
+\declaretheoremstyle[
+    headfont=\sffamily\color{Red!70!Black},
+    bodyfont=\ttfamily\color{SkyBlue!65!Red},
+    notefont=\color{Red!40!SkyBlue},
+    headpunct=,
+    headindent=\parindent,
+    postheadspace=\parindent,
+    notebraces = {\ (}{)\ }
+]{sol_style}
+\declaretheorem[
+    name=解,
+    numbered=no,
+    style=sol_style
+]{solution}
+\declaretheorem[
+    name=证明,
+    numbered=no,
+    style=sol_style
+]{proof}
+
+\newcommand{\colorbf}[1]{\ \textcolor{DarkCyan}{\textbf{#1}}\ }
+\DeclareMathOperator{\Span}{{\rm Span}}
+\DeclareMathOperator{\st}{{\rm \ s.t.\ }}
+\newcommand{\E}{\mathbb{E}}
+\DeclareMathOperator{\Var}{{\rm var}}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\newcommand{\Io}[1]{\ {\left]#1\right[}\ }
+\newcommand{\Ic}[1]{\ {\left[#1\right]}\ }
+\newcommand{\Ioc}[1]{\ {\left]#1\right]}\ }
+\newcommand{\Ico}[1]{\ {\left[#1\right[}\ }
+\newcommand{\matdef}[1]{\ \underline{#1}\ }
+\renewcommand{\land}{\ \texttt{\&\&}\ }
+\renewcommand{\lor}{\ \texttt{\|\|}\ }
+\renewcommand{\lnot}{\ \texttt{\!}\ }
+
+\lineskip=3pt
+\lineskiplimit=3pt
+\parskip=5pt
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+% 附录
+\include{fl/a1}
+\include{fl/a2}
+\include{fl/a3}
+\include{fl/a4}
+\include{fl/a5}
+\include{fl/a6}
+\part{基础概念}
+
+
+
+\end{document}

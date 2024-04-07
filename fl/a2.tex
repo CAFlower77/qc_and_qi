@@ -1,0 +1,70 @@
+\section{群论}
+\subsection{基本定义}
+\begin{definition*}[群]
+    (1) 封闭性 (2) 结合律 (3) 单位元 (4) 逆元
+\end{definition*}
+\begin{definition*}[有限群]
+    若群$G$有限, 则其成员个数$|G|$称为阶数。
+\end{definition*}
+\begin{definition*}[Abel群]
+    运算\colorbf{可交换}的群, 如整数模$n$的加法群$\mathbb{Z}_n$。
+\end{definition*}
+\begin{definition*}[阶数]
+    若$g\in G$, 使得$g^r=e$的最小正整数$r\in\mathbb{Z}_{>0}$称为其阶数。
+\end{definition*}
+\begin{definition*}[子群]
+    $H\leq G$是指$H\subset G$且$H$在$G$运算下构成群。
+\end{definition*}
+\begin{exercise}[B.1]
+    证明有限群的成员都有阶数, 即$\forall g\in\text{有限群}, \exists r\in\mathbb{Z}_{>0},\st g^r=e$。
+\end{exercise}
+\begin{proof}
+    若某个成员$g$没有阶数, 则群$G$有无限大的子集$\qty{g^r:r\in\mathbb{Z}_{>0}}$, 矛盾。进一步, 我们知道群$G$的任何成员的阶数不超过$|G|$。
+\end{proof}
+\begin{exercise}[B.2, Lagrange定理]
+    若$H\leq\text{有限群$G$}$, 则$|H|$可整除$|G|$, 除数$[G:H]=\frac{|G|}{|H|}$称为子群$H$的\sffamily{Lagrange指数}。
+\end{exercise}
+\par 为了证明此定理我们需要引入一些概念:
+\begin{definition*}[陪集]
+    设$H\leq g$, 集合$gH=\qty{gh:h\in H}$, $Hg=\qty{hg:h\in H}$称为$g$对$H$的\colorbf{左陪集}和\colorbf{右陪集}。
+\end{definition*}
+\begin{proposition}
+    $gH=H\Longleftrightarrow g\in H$
+\end{proposition}
+\begin{proof}
+    $g\in H\Longrightarrow gH=H$是显然的, 反过来时注意到$e\in H$, 则$g=ge\in gH=H$。
+\end{proof}
+\begin{proposition}
+    $g_1H\cap g_2H=\begin{dcases}
+        \text{非空集合} & (g_1H=g_2H)\\
+        \varnothing & (g_1H\neq g_2H)
+    \end{dcases}$
+\end{proposition}
+\begin{proof}
+    对$\forall g\in g_1H$有$g=g_1h=g_2\qty(g_2^{-1}g_1h)\ (h\in H)$。若$\exists\text{成员$g$}\in g_1H\cap g_2H$, 则有$h_1,h_2\in H\st g=g_1h_1=g_2h_2$ $\Longrightarrow$ $g_2^{-1}g_1=h_2h_1^{-1}\in H$, 由此$g=g_2\qty(g_2^{-1}g_1h)\in g_2H$。类似的$\forall g\in g_2H$ $\Longrightarrow$ $g\in g_1H$, 这就证明了$g_1H=g_2 H$。
+\end{proof}
+\begin{proof}[习题B.2, Lagrange定理]
+    我们知道全部陪集$\{gH:g\in G\}$是一组不交的集合, 容易看出$\bigcup\{gH:g\in G\}=G$, 即$G=\bigsqcup\{gH:g\in G\}=\bigsqcup gH$, 这说明$|G|=\sum |gH|$。容易证明$|gH|=|H|$, 这说明$|G|=\sum |gH|=\sum |H|=|H|\sum 1$, 由此命题得证。
+\end{proof}
+
+\begin{exercise}[B.3]
+    证明每个成员$g\in G$的阶数可以整除$|G|$。
+\end{exercise}
+
+
+\begin{definition*}
+    若$\exists g\in G,\st\text{群成员$a,b\in G$满足$b=g^{-1}ag$}$, 则称$a,b$为共轭成员。
+\end{definition*}
+\begin{proposition}
+    群成员间的共轭是等价关系。
+\end{proposition}
+\begin{proof}
+    \begin{enumerate}
+        \item 任意成员$a$与其自身共轭:
+        $$a=e^{-1}ae$$
+        \item 若成员$a$与成员$b$共轭, 则成员$b$与成员$a$共轭:
+        $$\qty(b=g^{-1}ag)\Longrightarrow\qty[a=\qty(g^{-1})^{-1}b\qty(g^{-1})]$$
+        \item 若成员$a$与成员$b$共轭, 成员$b$与成员$c$共轭, 则成员$a$与成员$c$共轭:
+        $$\qty(b=g^{-1}ag)\land\qty(c=g'^{-1}bg')\Longrightarrow\qty[c=g'^{-1}gagg'=\qty(gg')^{-1}a\qty(gg)]$$
+    \end{enumerate}
+\end{proof}
