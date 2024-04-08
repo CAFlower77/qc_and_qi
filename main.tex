@@ -9,8 +9,6 @@
 \author{Flower CA77}
 \date{}
 
-\PassOptionsToPackage{dvipsnames, svgnames, x11names}{xcolor}
-
 \ctexset{
     style={
         color=seaside,
@@ -23,8 +21,11 @@
 
 \usepackage{
     amsmath, amssymb, esint, mathrsfs, bm, bbm, mathtools,
-    cases, extarrows, siunitx, physics, geometry
+    cases, extarrows, siunitx, physics, geometry, appendix
 }
+
+\PassOptionsToPackage{dvipsnames, svgnames, x11names}{xcolor}
+\PassOptionsToPackage{tbtags}{amsmath}
 
 \declaretheoremstyle[
     headfont=\sffamily\color{Green},
@@ -74,7 +75,7 @@
 ]{theorem}
 \declaretheorem[
     name=命题,
-    numbered=no,
+    numbered=unless unique,
     style=thm_style
 ]{proposition}
 \declaretheoremstyle[
@@ -123,14 +124,13 @@
 \DeclareMathOperator{\Var}{{\rm var}}
 \renewcommand{\leq}{\leqslant}
 \renewcommand{\geq}{\geqslant}
-\newcommand{\Io}[1]{\ {\left]#1\right[}\ }
-\newcommand{\Ic}[1]{\ {\left[#1\right]}\ }
-\newcommand{\Ioc}[1]{\ {\left]#1\right]}\ }
-\newcommand{\Ico}[1]{\ {\left[#1\right[}\ }
-\newcommand{\matdef}[1]{\ \underline{#1}\ }
-\renewcommand{\land}{\ \texttt{\&\&}\ }
-\renewcommand{\lor}{\ \texttt{\|\|}\ }
-\renewcommand{\lnot}{\ \texttt{\!}\ }
+\newcommand{\Io}[1]{\mathop{\left]#1\right[}}
+\newcommand{\Ic}[1]{\mathop{\left[#1\right]}}
+\newcommand{\Ioc}[1]{\mathop{\left]#1\right]}}
+\newcommand{\Ico}[1]{\mathop{\left[#1\right[}}
+\renewcommand{\land}{\mathop{\texttt{\&\&}}}
+\renewcommand{\lor}{\mathop{\texttt{||}}}
+\renewcommand{\lnot}{\mathop{\texttt{!}}}
 
 \lineskip=3pt
 \lineskiplimit=3pt
@@ -193,12 +193,6 @@
 \include{part2/chap7/sect7}
 \include{part2/chap7/sect8}
 
-\include{part2/chap7/sect1}
-\include{part2/chap7/sect2}
-\include{part2/chap7/sect3}
-\include{part2/chap7/sect4}
-\include{part2/chap7/sect5}
-
 \part{量子信息}
 
 \include{part3/chap8/sect1}
@@ -232,6 +226,8 @@
 
 \addcontentsline{toc}{part}{附录}
 \part*{附录}
+
+\appendix
 
 \include{fl/a1}
 \include{fl/a2}

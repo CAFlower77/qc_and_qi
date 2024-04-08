@@ -1,5 +1,4 @@
-\chapter*{概率论基础}
-\addcontentsline{toc}{chapter}{概率论基础}
+\chapter{概率论基础}
 \par 随机变量$X$取值$x$的概率为$p(X=x)$:
 \begin{itemize}
     \item 如果$X$是离散型随机变量, 则$p(X=x)$为$X=x$的概率
@@ -9,38 +8,38 @@
 \par 概率密度的概念是始终有效的, 对离散型随机变量$X$, 我们可以取$\rho(x)=\sum_{x'}p(X=x')\delta(x-x')$, 其中求和$x'$取遍$X$的所有值, $\delta$为Dirac的$\delta$函数。进一步, 当$x'$不是$X$可取的值时$p(X=x')=0$, 求和$x'$可以取遍全部值。
 \par 一组随机变量$X_1,X_2,\cdots,X_n$组成随机向量$\bm X=(X_1,X_2,\cdots,X_n)$, 联合分布$p(\bm X=\bm x)=p(X_1=x_1,X_2=x_2,\cdots,X_n=x_n)$也简记为$p_{\bm X}(\bm x)$, 不引起混淆时简单记作$p(\bm x)$。
 \par 条件概率$p(Y=y\mid X=x)=p(X=x,Y=y)/p(X=x)$, 简记为$p_{Y\mid X}(y\mid x)=p_{(X,Y)}(x,y)/p_X(x)$, 其中分子是随机向量$(X,Y)$的联合分布。不引起混淆时我们简单记作$p(y\mid x)$。
-\par\colorbf{\textbf{注意}}\quad 在略去概率$p$的角标时[即简记$p_X(x)$为$p(x)$]必须要规范标记变量, 即用单个大写字母$X$表示随机变量, 其小写值$x$表示对应的$X$的取值, 这个规定也是$p(x)$的缺省标准。在表达式比较复杂时, 可以显示写出随机变量$p(X=x)$。
-\begin{exercise}[A.1] 证明Bayes定律$p(x\mid y)=p(y\mid x)\frac{p(x)}{p(y)}$
+\par\colorbf{\textbf{注意}}\quad 在略去概率$p$的角标时[即简记$p_X(x)$为$p(x)$]必须要规范标记变量, 即用单个大写字母$X$表示随机变量, 其小写值$x$表示对应的$X$的取值, 这个规定也是$p(x)$的缺省标准。在表达式比较复杂时, 可以显式写出随机变量$p(X=x)$。
+\begin{exercise}[教材A.1] 证明Bayes定律$p(x\mid y)=p(y\mid x)\frac{p(x)}{p(y)}$
 \end{exercise}
 \begin{proof}
     把待证等式改写为$p(x\mid y)p(y)=p(y\mid x)p(x)$, 可以看到等式两边都是联合分布概率$p(x,y)$, 这就证明了待证方程。
 \end{proof}
-\begin{exercise}[A.2]
+\begin{exercise}[教材A.2]
     全概率公式 $p(y)=\sum_x p(y\mid x)p(x)$
 \end{exercise}
 \begin{proof}
     $\sum_x p(y\mid x)p(x)=\sum_x p(x,y)=p(y)$
 \end{proof}
 \par 期望$\E X\equiv\sum_x xp(x)$, 方差$\Var X\equiv\E\qty[\qty(X-EX)^2]=\E\qty(X^2)-(\E X)^2$, 标准差$\Delta X\equiv\sqrt{\Var X}$
-\begin{exercise}[A.3]
+\begin{exercise}[教材A.3]
     证明$\exists x\geq\E X, \st p(x)>0$
 \end{exercise}
 \begin{proof}
-    反证, 只要证明命题$\forall x\geq\E X, \st p(x)=0$是伪命题即可。考虑到
+    反证, 只要证明命题$\forall x\geq\E X:p(x)=0$是伪命题即可。考虑到
     $$\E X=\sum_x xp(x)=\sum_{x<\E X}xp(x)+\sum_{x\geq \E X}xp(x)=\sum_{x<\E X}xp(x)<\E X\sum_{x<\E X}p(x)\leq\E X\sum_{x}p(x)=\E X$$
 \end{proof}
-\begin{exercise}[A.4]
+\begin{exercise}[教材A.4]
     证明$\E X$对$X$是线性的。
 \end{exercise}
 \begin{proof}
     $\E(kX)=\sum_x kxp(x)=k\sum_x xp(x)=k\E X$
 \end{proof}
-\begin{exercise}[A.5]
+\begin{exercise}[教材A.5]
     证明$X,Y$独立时$\E(XY)=\E X\cdot \E Y$
 \end{exercise}
 \begin{proof}$\E(XY)=\sum_{x,y}xyp(x,y)\xlongequal{\text{$X,Y$独立}}\sum_{x,y}xyp(x)p(y)=\sum_x xp(x)\sum_y yp(y)=\E X\cdot \E Y$
 \end{proof}
-\begin{exercise}[A.6 Cheybshev不等式]
+\begin{exercise}[教材A.6, Cheybshev不等式]
     $\forall\lambda>0$和有限方差的$X$, $p\qty(\qty|x-\E X|\geq\lambda\Delta X)\leq\frac{1}{\lambda^2}$
 \end{exercise}
 \begin{proof}
