@@ -70,12 +70,13 @@
 \declaretheorem[
     name=定理,
     numbered=unless unique,
-    within=section,
+    within=chapter,
     style=thm_style
 ]{theorem}
 \declaretheorem[
     name=命题,
     numbered=unless unique,
+    within=section,
     style=thm_style
 ]{proposition}
 \declaretheoremstyle[
@@ -131,6 +132,11 @@
 \renewcommand{\land}{\mathop{\texttt{\&\&}}}
 \renewcommand{\lor}{\mathop{\texttt{||}}}
 \renewcommand{\lnot}{\mathop{\texttt{!}}}
+
+% goodnotes figure colors
+\definecolor{03468F}{rgb}{0.0117647059,0.2745098039,0.5607843137}
+\definecolor{82218B}{rgb}{0.5098039216,0.1294117647,0.5450980392}
+\definecolor{007355}{rgb}{0           ,0.4509803922,0.3333333333}
 
 \lineskip=3pt
 \lineskiplimit=3pt
