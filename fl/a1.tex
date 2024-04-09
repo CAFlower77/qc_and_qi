@@ -5,6 +5,7 @@
     \item 如果$X$是连续型随机变量, 则$p(X=x)=0$, 因为一个点在一个连续区域内的测度为零, 此时我们引入概率密度$\rho(x)$, 使得$p(x\leq X<x+dx)=\rho(x)dx$
 \end{itemize}
 我们简记$p(X=x)$为$p_X(x)$, 不引起混淆时进一步简记为$p(x)$。
+\par 常数$c$可以看成取值$X=c$概率为$1$的随机变量$X$。
 \par 概率密度的概念是始终有效的, 对离散型随机变量$X$, 我们可以取$\rho(x)=\sum_{x'}p(X=x')\delta(x-x')$, 其中求和$x'$取遍$X$的所有值, $\delta$为Dirac的$\delta$函数。进一步, 当$x'$不是$X$可取的值时$p(X=x')=0$, 求和$x'$可以取遍全部值。
 \par 一组随机变量$X_1,X_2,\cdots,X_n$组成随机向量$\bm X=(X_1,X_2,\cdots,X_n)$, 联合分布$p(\bm X=\bm x)=p(X_1=x_1,X_2=x_2,\cdots,X_n=x_n)$也简记为$p_{\bm X}(\bm x)$, 不引起混淆时简单记作$p(\bm x)$。
 \par 条件概率$p(Y=y\mid X=x)=p(X=x,Y=y)/p(X=x)$, 简记为$p_{Y\mid X}(y\mid x)=p_{(X,Y)}(x,y)/p_X(x)$, 其中分子是随机向量$(X,Y)$的联合分布。不引起混淆时我们简单记作$p(y\mid x)$。
@@ -45,9 +46,69 @@
 \begin{proof}
     我们设概率密度为$\rho(x)$, 则
     \[\begin{split}
-        \Delta X^2=\Var X&=\E\qty[\qty(X-\E X)^2]=\int(x-\E X)^2\rho(x)dx\\
+        \qty(\Delta X)^2=\Var X&=\E\qty[\qty(X-\E X)^2]=\int(x-\E X)^2\rho(x)dx\\
         &=\int_{x-\E X\leq -\lambda\Delta X}(x-\E X)^2\rho(x)dx+\int_{\E X-\lambda\Delta X}^{\E X+\lambda\Delta X}(x-\E X)^2\rho(x)dx+\int_{x-\E X\geq\lambda\Delta X}(x-\E X)^2\rho(x)dx\\
         &\geq\lambda^2\Delta X^2\int_{x-\E X\leq-\lambda\Delta X}\rho(x)dx+0+\lambda^2\Delta X^2\int_{x-\E X\geq\lambda\Delta X}\rho(x)dx=\lambda^2\Delta X^2\int_{\qty|x-\E X|\geq\lambda\Delta X}\rho(x)dx
     \end{split}\]
     则$p\qty(\qty|X-\E X|\geq\lambda\Delta X)=\int_{\qty|x-\E X|\geq\lambda\Delta X}\rho(x)dx\leq\frac{\Delta X^2}{\lambda^2\Delta X^2}=\frac{1}{\lambda^2}$
 \end{proof}
+\par 我们补充一些内容, 首先是关于方差的一些定义。
+\begin{definition}[协方差]
+    两个随机变量$X,Y$的协方差定义为
+    $$\Cov(X,Y)=\E\qty[\qty(X-\E X)\qty(Y-\E Y)]=\E(XY)-\E X\cdot \E Y$$
+    容易看出同一个随机变量和其自身的协方差即为其自身的方差$\Cov(X,X)=\Var X=\qty(\Delta X)^2$, 两个变量的协方差是对称的$\Cov(X,Y)=\Cov(Y,X)$。
+\end{definition}
+\begin{definition}[相关系数]
+    两个随机变量$X,Y$的相关系数为其协方差除以两个变量的标准差
+    $$\rho_{X,Y}=\frac{\Cov(X,Y)}{\Delta X\cdot\Delta Y}=\frac{\Cov(X,Y)}{\sqrt{\Var X}\sqrt{\Var Y}}$$
+    容易看出同一个随机变量和其自身是完全相关的$\rho_{X,X}=1$, 两个变量的相关是对称的$\rho_{X,Y}=\rho_{Y,X}$。
+\end{definition}
+\begin{proposition}
+    两个随机变量$X,Y$相关系数$\rho_{X,Y}=1$ $\Longleftrightarrow$ 两者与常数$1$线性相关$\exists\lambda,\mu\in\mathbb R:\lambda X+\mu Y=1$, 此时我们称两个变量\colorbf{完全相关}。若$\rho_{X,Y}=0$, 我们称$X,Y$完全不相关。根据相关系数的符号$\rho_{X,Y}>0$或$<0$时我们称$X,Y$\colorbf{正相关}或\colorbf{负相关}。
+\end{proposition}
+\begin{definition}
+    对随机向量$\bm X=(X_1,X_2,\cdots,X_n)$, 其\colorbf{协方差矩阵}$\bm C=\Cov\bm X=\qty[\Cov(X_i,X_j)]_{n\times n}$和\colorbf{相关系数矩阵}$\bm\rho=\rho_{\bm X}=\qty[\rho_{X_i,X_j}]_{n\times n}$分别为
+    $$\mqty[
+        \Var X_1 & \Cov(X_1, X_2) & \cdots & \Cov(X_1, X_n)\\
+        \Cov(X_2, X_1) & \Var X_2 & \cdots & \Cov(X_2, X_n)\\
+        \vdots & \vdots &  & \vdots\\
+        \Cov(X_n, X_1) & \Cov(X_n, X_2) & \cdots & \Var X_n
+    ],\qquad \mqty[
+        1 & \rho_{X_1, X_2} & \cdots & \rho_{X_1, X_n}\\
+        \rho_{X_2, X_1} & 1 & \cdots & \rho_{X_2, X_n}\\
+        \vdots & \vdots &  & \vdots\\
+        \rho_{X_n, X_1} & \rho_{X_n, X_2} & \cdots & 1\\
+    ]$$
+\end{definition}
+\par 然后我们来补充一些和期望有关的工具。
+\begin{definition}[条件期望]
+    随机变量$X$在取值$x$的情况下随机变量$Y$的条件期望为$Y$在$X=x$下条件概率的期望$\E(Y\mid X=x)=\sum_{y}yp(Y=y\mid X=x)$, 简记为$\E(Y\mid x)=\sum_y yp(y\mid x)$。
+\end{definition}
+\begin{definition}[生成函数]
+    随机变量$X$的生成函数$f_X(t)$或简记为$f(X)$, 定义为$f(X)=\E\qty(e^{itX})$, 将其展开可以发现生成函数事实上是概率的Fourier变换$f(X)=\sum_x p(x)e^{itx}$, 当我们把概率写成概率密度的积分时可以更明显的看出Fourier变换的形式$f(X)=\int \rho(x)e^{itx}dx$。
+\end{definition}
+\begin{proposition}
+    若$X,Y$独立, 则$Z=X+Y$的生成函数为$f(Z)=f(X+Y)=f(X)f(Y)$
+\end{proposition}
+\begin{proof}
+    $f(Z)=\E\qty(e^{itZ})=\E\qty(e^{it(X+Y)})=\E\qty(e^{itX}e^{itY})\xlongequal{\text{$X,Y$独立}}\E\qty(e^{itX})\E\qty(e^{itY})=f(X)f(Y)$
+\end{proof}
+\par 常数$c$的生成函数为$\E(e^{itc})=e^{itc}$, 是一个转动的相位。
+\par 利用生成函数可以证明概率论中最重要的定理:
+\begin{theorem}[中心极限定理]
+    对均值$\mu$标准差$\sigma$的i.i.d.(独立同分布)随机变量$X_1,X_2,\cdots,X_n$, 当样本数$n$趋向无限大时有极限$\lim_{n\to\infty}p\Biggl(\frac{\sum\limits_{i=1}^nX_i-n\mu}{\sigma\sqrt{n}}\leq x\Biggr)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^x\exp(-\frac{1}{2}z^2)dz$
+\end{theorem}
+\begin{proof}
+    设$Z_n=\frac{\sum\limits_{i=1}^nX_i-n\mu}{\sigma\sqrt{n}}=\sum_{i=1}^n\frac{X_i-\mu}{\sigma\sqrt{n}}$, 则
+    $$f(Z_n)=\prod_{i=1}^n f\qty(\frac{X_i-\mu}{\sigma\sqrt{n}})=\prod_{i=1}^n f\qty(\frac{X_i}{\sigma\sqrt{n}})\exp(-i\frac{\mu t}{\sigma\sqrt{n}})$$
+    由于$X_i\ (i=1,2,\cdots,n)$ i.i.d. , 故上式变成
+    $$f(Z_n)=\qty[f\qty(\frac{X}{\sigma\sqrt{n}})\exp(-i\frac{\mu t}{\sigma\sqrt{n}})]^n=\qty[\E\exp(i\frac{Xt}{\sigma\sqrt{n}})\exp(-i\frac{\mu t}{\sigma\sqrt{n}})]^n=\qty[\E\exp(i\frac{X-\mu}{\sigma\sqrt{n}}t)]^n$$
+    作Taylor展开得到
+    $$f(Z_n)=\qty[1+i\E\frac{X-\mu}{\sigma\sqrt{n}}t-\E\frac{(X-\mu)^2}{2\sigma^2n}t^2+O\qty(n^{-3/2})]^n$$
+    注意到$n\to\infty$时$\E\overline{X}=\sum\frac{\E X}{n}\to\mu$, 也就是说$n\to\infty$时生成函数里面的全部$\E X$换成$\mu$后得到的量是原来的等价量, 即
+    $$f(Z_n)\sim\qty[1-\E\frac{(X-\mu)^2}{2\sigma^2n}t^2]^n\to\exp[-\E\frac{(X-\mu)^2}{2\sigma^2}t^2]$$
+    那么
+    $$f(Z)=f\qty(\lim_{n\to\infty}Z_n)\sim\lim_{n\to\infty}f(Z_n)=\exp[-\E\frac{(X-\mu)^2}{2\sigma^2}t^2]=\exp(-\frac{1}{2}t^2)$$
+    正如我们提到的, 生成函数实际上是概率分布的Fourier变换, 即$\int p(z)e^{itz}dz=\exp(-\frac{1}{2}t^2)$, 那么我们直接将生成函数作Fourier逆变换就能得到概率密度$p(z)=\frac{1}{2\pi}\int\exp(-\frac{1}{2}t^2)e^{-itz}dt=\frac{1}{\sqrt{2\pi}}\exp(z^2)$, 即标准Gauss分布的概率密度。
+\end{proof}
+\par 这个定理事实上是说, 从均值$\mu$标准差$\sigma$的统计数据中抽样$X$, 当样本容量$n$足够大时样本的均值$\overline{X}=\frac{1}{n}\sum X$将趋向于Gauss分布$N\qty(\mu,\frac{\sigma^2}{n})$, 即$\frac{1}{\sqrt{n}}\overline{X^*}=\frac{\sum X-n\mu}{\sigma\sqrt{n}}$ $\qty(\text{$X^*=\frac{X-\mu}{\sigma}$为$X$的标准化变量})$的概率密度将趋向于标准Gauss分布的概率密度$\frac{1}{\sqrt{2\pi}}\exp(-\frac{1}{2}t^2)$。均值的分布标准差相比样本自身的标准差相差倍数$\frac{1}{\sqrt{n}}$, 这个系数就是所谓的\colorbf{经典测量极限}。
